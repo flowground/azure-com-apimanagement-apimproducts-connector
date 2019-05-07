@@ -1,0 +1,117 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "productId": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "pattern": "^[^*#&+:<>?]+$"
+        },
+        "policyId": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "policy"
+            ]
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The Resource definition.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type for API Management resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Policy Contract details.",
+            "properties": {
+                "properties": {
+                    "description": "Policy contract Properties.",
+                    "properties": {
+                        "contentFormat": {
+                            "default": "xml",
+                            "description": "Format of the policyContent.",
+                            "enum": [
+                                "xml",
+                                "xml-link",
+                                "rawxml",
+                                "rawxml-link"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "PolicyContentFormat",
+                                "values": [
+                                    {
+                                        "description": "The contents are inline and Content type is an XML document.",
+                                        "value": "xml"
+                                    },
+                                    {
+                                        "description": "The policy XML document is hosted on a http endpoint accessible from the API Management service.",
+                                        "value": "xml-link"
+                                    },
+                                    {
+                                        "description": "The contents are inline and Content type is a non XML encoded policy document.",
+                                        "value": "rawxml"
+                                    },
+                                    {
+                                        "description": "The policy document is not Xml encoded and is hosted on a http endpoint accessible from the API Management service.",
+                                        "value": "rawxml-link"
+                                    }
+                                ]
+                            }
+                        },
+                        "policyContent": {
+                            "description": "Json escaped Xml Encoded contents of the Policy.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "policyContent"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

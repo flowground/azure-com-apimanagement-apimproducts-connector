@@ -1,0 +1,475 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on Product entity associated with your Azure API Management deployment. The Product entity represents a product in API Management. Products include one or more APIs and their associated terms of use. Once a product is published, developers can subscribe to the product and begin to use the product's APIs.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimproducts/2018-06-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Product_ListByService": {
+            "main": "./lib/actions/Product_ListByService.js",
+            "title": "Lists a collection of products in the specified service instance.",
+            "description": "Lists a collection of products in the specified service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_ListByService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Product_Delete": {
+            "main": "./lib/actions/Product_Delete.js",
+            "title": "Delete product.",
+            "description": "Delete product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Product_Get": {
+            "main": "./lib/actions/Product_Get.js",
+            "title": "Gets the details of the product specified by its identifier.",
+            "description": "Gets the details of the product specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Product_GetEntityTag": {
+            "main": "./lib/actions/Product_GetEntityTag.js",
+            "title": "Gets the entity state (Etag) version of the product specified by its identifier.",
+            "description": "Gets the entity state (Etag) version of the product specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Product_Update": {
+            "main": "./lib/actions/Product_Update.js",
+            "title": "Update existing product details.",
+            "description": "Update existing product details.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Product_CreateOrUpdate": {
+            "main": "./lib/actions/Product_CreateOrUpdate.js",
+            "title": "Creates or Updates a product.",
+            "description": "Creates or Updates a product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Product_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductApi_ListByProduct": {
+            "main": "./lib/actions/ProductApi_ListByProduct.js",
+            "title": "Lists a collection of the APIs associated with a product.",
+            "description": "Lists a collection of the APIs associated with a product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductApi_ListByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductApi_Delete": {
+            "main": "./lib/actions/ProductApi_Delete.js",
+            "title": "Deletes the specified API from the specified product.",
+            "description": "Deletes the specified API from the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductApi_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductApi_CheckEntityExists": {
+            "main": "./lib/actions/ProductApi_CheckEntityExists.js",
+            "title": "Checks that API entity specified by identifier is associated with the Product entity.",
+            "description": "Checks that API entity specified by identifier is associated with the Product entity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductApi_CheckEntityExists.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductApi_CreateOrUpdate": {
+            "main": "./lib/actions/ProductApi_CreateOrUpdate.js",
+            "title": "Adds an API to the specified product.",
+            "description": "Adds an API to the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductApi_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductGroup_ListByProduct": {
+            "main": "./lib/actions/ProductGroup_ListByProduct.js",
+            "title": "Lists the collection of developer groups associated with the specified product.",
+            "description": "Lists the collection of developer groups associated with the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductGroup_ListByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductGroup_Delete": {
+            "main": "./lib/actions/ProductGroup_Delete.js",
+            "title": "Deletes the association between the specified group and product.",
+            "description": "Deletes the association between the specified group and product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductGroup_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductGroup_CheckEntityExists": {
+            "main": "./lib/actions/ProductGroup_CheckEntityExists.js",
+            "title": "Checks that Group entity specified by identifier is associated with the Product entity.",
+            "description": "Checks that Group entity specified by identifier is associated with the Product entity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductGroup_CheckEntityExists.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductGroup_CreateOrUpdate": {
+            "main": "./lib/actions/ProductGroup_CreateOrUpdate.js",
+            "title": "Adds the association between the specified developer group with the specified product.",
+            "description": "Adds the association between the specified developer group with the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductGroup_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductPolicy_ListByProduct": {
+            "main": "./lib/actions/ProductPolicy_ListByProduct.js",
+            "title": "Get the policy configuration at the Product level.",
+            "description": "Get the policy configuration at the Product level.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductPolicy_ListByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductPolicy_Delete": {
+            "main": "./lib/actions/ProductPolicy_Delete.js",
+            "title": "Deletes the policy configuration at the Product.",
+            "description": "Deletes the policy configuration at the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductPolicy_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductPolicy_Get": {
+            "main": "./lib/actions/ProductPolicy_Get.js",
+            "title": "Get the policy configuration at the Product level.",
+            "description": "Get the policy configuration at the Product level.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductPolicy_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductPolicy_GetEntityTag": {
+            "main": "./lib/actions/ProductPolicy_GetEntityTag.js",
+            "title": "Get the ETag of the policy configuration at the Product level.",
+            "description": "Get the ETag of the policy configuration at the Product level.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductPolicy_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductPolicy_CreateOrUpdate": {
+            "main": "./lib/actions/ProductPolicy_CreateOrUpdate.js",
+            "title": "Creates or updates policy configuration for the Product.",
+            "description": "Creates or updates policy configuration for the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductPolicy_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductSubscriptions_List": {
+            "main": "./lib/actions/ProductSubscriptions_List.js",
+            "title": "Lists the collection of subscriptions to the specified product.",
+            "description": "Lists the collection of subscriptions to the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductSubscriptions_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Tag_ListByProduct": {
+            "main": "./lib/actions/Tag_ListByProduct.js",
+            "title": "Lists all Tags associated with the Product.",
+            "description": "Lists all Tags associated with the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Tag_ListByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Tag_DetachFromProduct": {
+            "main": "./lib/actions/Tag_DetachFromProduct.js",
+            "title": "Detach the tag from the Product.",
+            "description": "Detach the tag from the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Tag_DetachFromProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Tag_GetByProduct": {
+            "main": "./lib/actions/Tag_GetByProduct.js",
+            "title": "Get tag associated with the Product.",
+            "description": "Get tag associated with the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Tag_GetByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Tag_GetEntityStateByProduct": {
+            "main": "./lib/actions/Tag_GetEntityStateByProduct.js",
+            "title": "Gets the entity state version of the tag specified by its identifier.",
+            "description": "Gets the entity state version of the tag specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Tag_GetEntityStateByProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Tag_AssignToProduct": {
+            "main": "./lib/actions/Tag_AssignToProduct.js",
+            "title": "Assign tag to the Product.",
+            "description": "Assign tag to the Product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Tag_AssignToProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
